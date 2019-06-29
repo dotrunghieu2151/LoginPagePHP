@@ -8,3 +8,11 @@ CREATE TABLE users(
 	created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
 	active BOOLEAN NOT NULL DEFAULT 0
 );
+
+CREATE TABLE passReset(
+	passResetId int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    passResetEmail TEXT NOT NULL,
+    passResetSelector TEXT NOT NULL,
+    passResetToken LONGTEXT NOT NULL,
+    passResetExpire TEXT NOT NULL
+);

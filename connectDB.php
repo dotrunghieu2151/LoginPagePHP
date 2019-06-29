@@ -1,12 +1,21 @@
 <?php
+/* using object oriented mysqli
     $host = 'localhost';
-    $user= 'root';
-    $password = 'dantebloodhunter';
+    $db_user= 'root';
+    $db_password = 'dantebloodhunter';
     $database = 'accounts';
     //create connection
-    $connection = mysqli_connect($host,$user,$password,$database);
-    if(!$connection) {
-        exit("Connection failed: " . mysqli_connect_error() );
-    }
-
-
+    $connection = new mysqli($host,$db_user,$db_password,$database) OR die($connection->error);
+*/
+// using PDO
+    $host = 'localhost';
+    $db_user = 'root';
+    $db_pass = '';
+    $db = 'accounts';
+    $dsn = "mysql:host=$host;dbname=$db";
+     try {
+         $connection = new PDO($dsn,$db_user,$db_pass);
+         $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+     } catch (PDOException $e) {
+         echo "connection failed: " . $e->getMessage();
+     }
